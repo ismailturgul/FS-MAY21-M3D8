@@ -19,45 +19,48 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="container">
-    <h1 class="mt-5">Products</h1>
-    <hr>
-    <div class="card-columns">
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand">Navbar</a>
+      <a class="navbar-brand"  href="back-office.html">Back office</a>
+    </nav>
 
+    <div class="container">
+      <h1 class="mt-5">Products</h1>
+      <hr />
+      <div class="card-columns"></div>
     </div>
-  </div>
     <script>
-        const url = "https://striveschool-api.herokuapp.com/api/product/";
-        const headers = new Headers ({
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjNmYmIzNTgxNzAwMTVjMjI3MGYiLCJpYXQiOjE2MjUwNTYzOTUsImV4cCI6MTYyNjI2NTk5NX0.HBZLYu70myKI9gN2Ws8VhyMOG_0WgZDtB77ZMnhoS2M",
-              "Content-Type": "application/json",
-            });
-        const getProduct = (callback) => {
-          fetch(url,{headers})
-          .then(response=>response.json())
+      const url = "https://striveschool-api.herokuapp.com/api/product/";
+      const headers = new Headers({
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjNmYmIzNTgxNzAwMTVjMjI3MGYiLCJpYXQiOjE2MjUwNTYzOTUsImV4cCI6MTYyNjI2NTk5NX0.HBZLYu70myKI9gN2Ws8VhyMOG_0WgZDtB77ZMnhoS2M",
+        "Content-Type": "application/json",
+      });
+      const getProduct = (callback) => {
+        fetch(url, { headers })
+          .then((response) => response.json())
           .then((data) => callback(null, data))
-          .catch((error) => callback(error,null))
-        };
-        window.onload = function (){
-          getProduct((error, data) => {
-            if (error)   {
-              consol.log({error});
-            } else {
-              const content = document.querySelector(".card-columns");
-              content.innerHTML = "";
-              data.forEach((product) => {
-                content.innerHTML +=`      <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+          .catch((error) => callback(error, null));
+      };
+      window.onload = function () {
+        getProduct((error, data) => {
+          if (error) {
+            consol.log({ error });
+          } else {
+            const content = document.querySelector(".card-columns");
+            content.innerHTML = "";
+            data.forEach((product) => {
+              content.innerHTML += `      <div class="card">
+                <img src="${product.imageUrl}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title that wraps to a new line</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">${product.name}/h5>
+                  <p class="card-text">${product.description}</p>
                 </div>
-              </div>`
-              })
-            }
-          })
-        };
+              </div>`;
+            });
+          }
+        });
+      };
     </script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
