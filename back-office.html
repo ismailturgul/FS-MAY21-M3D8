@@ -1,0 +1,33 @@
+
+     /* const getProduct = async (events) => {
+        const url = "https://striveschool-api.herokuapp.com/api/product/";
+        const myEvent = {
+          name: document.getElementById("name").value,
+          description: document.getElementById("description").value,
+          brand: document.getElementById("brand").value,
+          imageUrl:
+          document.getElementById("imageurl").value, 
+          price: document.getElementById("price").value,
+        };
+
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(myEvent),
+            headers: new Headers {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjNmYmIzNTgxNzAwMTVjMjI3MGYiLCJpYXQiOjE2MjUwNTYzOTUsImV4cCI6MTYyNjI2NTk5NX0.HBZLYu70myKI9gN2Ws8VhyMOG_0WgZDtB77ZMnhoS2M",
+              "Content-Type": "application/json",
+            },
+          });
+          if (!response.ok) throw new Error("Failed to fetch");
+
+          const events = await response.json();
+          console.log(events);
+          return events;
+        } catch (err) {
+          console.log(err);
+        } finally {
+          console.log("I'm the last thing");
+        }
+      };
