@@ -20,30 +20,12 @@
   </head>
   <body>
     <div class="container">
-      <div class="form-group">
-        <label for="formGroupExampleInput">Name</label>
-        <input type="text" class="form-control" placeholder="Name of your product" id="name" />
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput">Description</label>
-        <input type="text" size="100" class="form-control" placeholder="Describe your product" id="description" />
-        <br />
-        <br />
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput">Image</label>
-        <input src="" class="form-control" id="imageurl" />
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput">Brand</label>
-        <input type="text" class="form-control" placeholder="Brand of product"  id="brand" />
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput">Price</label>
-        <input type="number" class="form-control" id="price" />
-      </div>
-      <button type="submit" class="btn btn-secondary">Submit</button>
+    <h1 class="mt-5">Products</h1>
+    <hr>
+    <div class="card-columns">
+
     </div>
+  </div>
     <script>
         const url = "https://striveschool-api.herokuapp.com/api/product/";
         const headers = new Headers ({
@@ -62,7 +44,17 @@
             if (error)   {
               consol.log({error});
             } else {
-              console.log({data});
+              const content = document.querySelector(".card-columns");
+              content.innerHTML = "";
+              data.forEach((product) => {
+                content.innerHTML +=`      <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title that wraps to a new line</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>`
+              })
             }
           })
         };

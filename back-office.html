@@ -31,3 +31,54 @@
           console.log("I'm the last thing");
         }
       };
+
+
+      <div class="container">
+        <div class="form-group">
+          <label for="formGroupExampleInput">Name</label>
+          <input type="text" class="form-control" placeholder="Name of your product" id="name" />
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Description</label>
+          <input type="text" size="100" class="form-control" placeholder="Describe your product" id="description" />
+          <br />
+          <br />
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Image</label>
+          <input src="" class="form-control" id="imageurl" />
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Brand</label>
+          <input type="text" class="form-control" placeholder="Brand of product"  id="brand" />
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Price</label>
+          <input type="number" class="form-control" id="price" />
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+      </div>
+
+      <script>
+        const url = "https://striveschool-api.herokuapp.com/api/product/";
+        const headers = new Headers ({
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjNmYmIzNTgxNzAwMTVjMjI3MGYiLCJpYXQiOjE2MjUwNTYzOTUsImV4cCI6MTYyNjI2NTk5NX0.HBZLYu70myKI9gN2Ws8VhyMOG_0WgZDtB77ZMnhoS2M",
+              "Content-Type": "application/json",
+            });
+        const getProduct = (callback) => {
+          fetch(url,{headers})
+          .then(response=>response.json())
+          .then((data) => callback(null, data))
+          .catch((error) => callback(error,null))
+        };
+        window.onload = function (){
+          getProduct((error, data) => {
+            if (error)   {
+              consol.log({error});
+            } else {
+              console.log({data});
+            }
+          })
+        };
+    </script>
