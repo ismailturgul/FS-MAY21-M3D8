@@ -62,7 +62,10 @@
           <label for="price">Price</label>
           <input type="number" class="form-control" id="price" />
         </div>
-
+        <div class="form-group d-flex justify-content-end ">
+          <button type="submit" class="btn btn-warning mr-2 w-25">Save</button>
+          <button type="reset" class="btn btn-danger mr-2 w-25">Reset</button>
+        </div>
       </form>
     </div>
     <script>
@@ -77,8 +80,17 @@
           .then((response) => response.json())
           .then((data) => callback(null, data))
           .catch((error) => callback(error, null));
-      };
-    </script>
+      }; 
+      const formOnSubmit = function(e){
+      e.preventDefault();
+      const name = document.querySelector("#name").value;
+      const description = document.querySelector("#description").value;
+      const price = document.querySelector("#price").value;
+      const brand = document.querySelector("#brand").value;
+      const imageUrl = document.querySelector("#imageUrl").value;
+      const product = {name,brand,imageUrl,price,description}
+      }
+</script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
