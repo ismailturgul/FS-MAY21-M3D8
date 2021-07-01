@@ -70,7 +70,6 @@
     </div>
     <script>
       const url = "https://striveschool-api.herokuapp.com/api/product/";
-      const
       const headers = new Headers({
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjNmYmIzNTgxNzAwMTVjMjI3MGYiLCJpYXQiOjE2MjUwNTYzOTUsImV4cCI6MTYyNjI2NTk5NX0.HBZLYu70myKI9gN2Ws8VhyMOG_0WgZDtB77ZMnhoS2M",
@@ -79,7 +78,7 @@
       const postProduct = (product, callback) => {
         fetch(url, {
           headers,
-          method: "POST",
+          method: "PUT",
           body: JSON.stringify(product),
         })
           .then((response) => response.json())
