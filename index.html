@@ -41,20 +41,19 @@
         const confirmed = confirm("Are you sure you want to delete this?");
         if (confirmed) {
           try {
-            const response = await fetch(url, { method: "DELETE" });
+            const response = await fetch(url, { method: "DELETE", headers });
             if (response.ok) {
               alert("you deleted it");
             } else {
-              alert(
-                "Something went wrong in the deletion process"
-              );
+              alert("Something went wrong in the deletion process");
             }
           } catch (err) {
             alert("danger", err.message);
           }
         }
       };
- 
+
+
       const getProduct = (callback) => {
         fetch(url, { headers })
           .then((response) => response.json())
