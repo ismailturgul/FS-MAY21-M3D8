@@ -76,7 +76,7 @@
         "Content-Type": "application/json",
       });
       const postProduct = (product, callback) => {
-        fetch(url, { headers, method: "POST", body: JSON.stringify(myEvent) })
+        fetch(url, { headers, method: "POST", body: JSON.stringify(product) })
           .then((response) => response.json())
           .then((data) => callback(null, data))
           .catch((error) => callback(error, null));
@@ -89,8 +89,15 @@
       const brand = document.querySelector("#brand").value;
       const imageUrl = document.querySelector("#imageUrl").value;
       const product = {name,brand,imageUrl,price,description}
-      console.log({product})
-
+      postProduct(product,(err,data)=>{
+        if(err){
+          console.log({err})
+        }else{
+          e.target.reset();
+          window.location.replace("/")
+          console.log({product})
+        }
+      })
 
     
       }  
