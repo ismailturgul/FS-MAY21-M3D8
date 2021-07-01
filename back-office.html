@@ -28,6 +28,42 @@
       <h1 class="mt-5">Add Product</h1>
       <hr />
 
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            class="form-control"
+            placeholder="Name of your product"
+            id="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            row="5"
+            class="form-control"
+            placeholder="Describe your product"
+            id="description"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image</label>
+          <input src="" class="form-control" id="imageurl" />
+        </div>
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input
+            class="form-control"
+            placeholder="Brand of product"
+            id="brand"
+          />
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" />
+        </div>
+
+      </form>
     </div>
     <script>
       const url = "https://striveschool-api.herokuapp.com/api/product/";
